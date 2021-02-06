@@ -8,6 +8,9 @@ router.route('/locations')
 .post(ctrlLocations.createLocation);
 
 router.route('/location/:locationid')
-.get(ctrlLocations.locationReadOne);
+.get(ctrlLocations.locationReadOne)
+.delete(ctrlLocations.deleteLocation)
+.put(ctrlLocations.updateLocation);
+
 
 module.exports = router;

@@ -15,7 +15,7 @@ const locationSchema = new mongoose.Schema({
     address: String,
     coords: {
         type: { type: String },
-        coordinates: [Number],
+        coordinates: { type: [Number] , required: true },
     },
 services: [servicesSchema],
  });
