@@ -1,0 +1,31 @@
+:root {
+    --primary-grey: #706e6d;
+}
+
+.location-list {
+}
+
+.tm-portfolio-name {
+    color: white;
+    background-color: var(--primary-grey);
+}
+
+.fa-times {
+    color: red;
+}
+.fa-check {
+    color: green;
+}
+.address {
+    font-size: 20px;
+}
+.services {
+    font-size: 25px;
+    white-space: nowrap;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Map Section of the Details Page */
