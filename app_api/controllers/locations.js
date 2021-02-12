@@ -16,7 +16,7 @@ const _buildLocationList = (req, res, results, stats) => {
     return locations;
 };
 
-const locationsListByDistance = async (req, res) => { 
+const locationsListByDistance = async (req, res) => {
     const lng = parseFloat(req.query.lng);
     const lat = parseFloat(req.query.lat);
     const point = {
@@ -33,66 +33,67 @@ const locationsListByDistance = async (req, res) => {
     if (!lng || !lat) {
         console.log('locationsListByDistance missing params');
         res
-        .status(404)
-        .json({
-            "message": "lng and lat paramaters are required"
-        });
+            .status(404)
+            .json({
+                "message": "lng and lat paramaters are required"
+            });
         return;
     } else {
-    Loc.aggregate([
-        {
-          $geoNear: {
-             near: point,
-             distanceField: "dist.calculated",
-             key: 'coords',
-             maxDistance: 40000,
-             spherical: true,
-          }
-        }
-     ],//),
-     function(err, results, stats) {
-         if (err) {
-             res
-             .status(404)
-             .json(err);
-         } else {
-             console.log('PRINT RESULTS', results);
-             locations = _buildLocationList(req, res, results, stats);
-             console.log('Geo results', results);
-             console.log('Geo stats', stats);
-             res.status(200).json(locations);
-             
-         }
-     }
-     )
+        Loc.aggregate([
+            {
+                $geoNear: {
+                    near: point,
+                    distanceField: "dist.calculated",
+                    key: 'coords',
+                    maxDistance: 40000,
+                    spherical: true,
+                }
+            }
+        ],//),
+            function (err, results, stats) {
+                if (err) {
+                    res
+                        .status(404)
+                        .json(err);
+                } else {
+                    console.log('PRINT RESULTS', results);
+                    locations = _buildLocationList(req, res, results, stats);
+                    console.log('Geo results', results);
+                    console.log('Geo stats', stats);
+                    res.status(200).json(locations);
+
+                }
+            }
+        )
     };
 };
 
 const locationReadOne = (req, res) => {
     Loc
-    .findById(req.params.locationid)
-    .exec((err, location) => { 
-        if(!location) {
-            return res
-            .status(404)
-            .json({
-                "message": "location not found"
-            });
-        } else if(err) {
-            return res.status(404).json(err);
-        }
-        res.status(200).json(location);
-    });
+        .findById(req.params.locationid)
+        .exec((err, location) => {
+            if (!location) {
+                return res
+                    .status(404)
+                    .json({
+                        "message": "location not found"
+                    });
+            } else if (err) {
+                return res.status(404).json(err);
+            }
+            res.status(200).json(location);
+            console.log('LOCATION READ ONE', location);
+        });
 };
 
 const createLocation = (req, res) => {
     Loc.create({
-        name:req.body.name,
-        address:req.body.address,
+        name: req.body.name,
+        address: req.body.address,
         coords: {
             type: "Point",
             coordinates: [parseFloat(req.body.lng),
-                         parseFloat(req.body.lat)]
+            parseFloat(req.body.lat)]
         },
         services: [{
             vaccine: req.body.vaccine,
@@ -109,43 +110,43 @@ const createLocation = (req, res) => {
 };
 
 const deleteLocation = (req, res) => {
-    const {locationid} = req.params;
+    const { locationid } = req.params;
     if (locationid) {
         Loc.findByIdAndRemove(locationid)
-        .exec((err, location) => {
-            if (err) {
-                return res
-                .status(404)
-                .json(err);
-            }
-            res
-            .status(204)
-            .json({"message" : "Location Deleted"});
-        });
+            .exec((err, location) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json({ "message": "Location Deleted" });
+            });
     } else {
         return res
-        .status(404)
-        .json({"message" : "No Location Found"})
+            .status(404)
+            .json({ "message": "No Location Found" })
     }
 
 };
 
 const updateLocation = (req, res) => {
     if (!req.params.locationid) {
-        return res.response(404).json({"message": "Not found, Location not found."});
+        return res.response(404).json({ "message": "Not found, Location not found." });
     }
     Loc.findById(req.params.locationid).exec((err, location) => {
-        if (!location) { 
-            return res.response(404).json({"message" : "Location not found"}); 
+        if (!location) {
+            return res.response(404).json({ "message": "Location not found" });
         } else if (err) {
             return res.response(404).json(err);
         }
 
         location.name = req.body.name;
         location.address = req.body.address;
-        location.coords = { 
-            type: "Point", 
-            coordinates: [parseFloat(req.body.lng), parseFloat(req.body.lat)] 
+        location.coords = {
+            type: "Point",
+            coordinates: [parseFloat(req.body.lng), parseFloat(req.body.lat)]
         };
         location.services = {
             vaccine: req.body.vaccine,
@@ -154,7 +155,7 @@ const updateLocation = (req, res) => {
         }
 
         location.save((err, loc) => {
-            if (err) { res.status(404).json(err); } 
+            if (err) { res.status(404).json(err); }
             else { res.status(200).json(loc); }
 
         });

@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import * as L from 'leaflet';
+import { StringifyOptions } from 'querystring';
 
 @Component({
   selector: 'app-details',
@@ -13,10 +14,20 @@ import * as L from 'leaflet';
 })
 export class DetailsComponent implements OnInit {
 
+
+
   newLocation: Location;
 
   constructor(private locationInfoService: LocationInfoService,
     private route: ActivatedRoute) { }
+
+/*
+    locationName: string;
+
+    currentLocation(newItem: string) {
+      this.locationName = newItem;
+    }
+  */
 
 
 

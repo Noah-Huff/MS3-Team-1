@@ -44,7 +44,10 @@ a:hover {
   color: white;
 }
 .warning {
+  margin-top: 45px;
   background-color: yellow;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #mapid {
@@ -64,6 +67,15 @@ a:hover {
   margin-bottom: 30px;
   background-color: var(--primary-grey);
   color: white;
+
+}
+.details-name {
+  font-size: 2rem;
+  padding: 30px;
+}
+.location-details {
+  padding: 15px;
+  font-size: 1rem;
 }
 .background-color {
   background-color: var(--light-grey);

@@ -12,7 +12,13 @@ import { EventEmitter } from '@angular/core';
 })
 
 export class LocationsComponent implements OnInit {
+/*
+  @Output() clickedLocation = new EventEmitter<string>();
 
+  addLocation(value: string) {
+    this.clickedLocation.emit(value);
+  }
+*/
 
   constructor(private locationInfoService: LocationInfoService,
     private geoLocationService: GeolocationService) { }
@@ -35,7 +41,6 @@ export class LocationsComponent implements OnInit {
           console.log(this.locations);
         });
     }
-
 
     private _showError(error: any): void {
       this.message = error.message;

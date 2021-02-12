@@ -1,11 +1,15 @@
 <div>
 
-  <div class="details container box-shadow">
-    <p *ngIf="newLocation">{{ newLocation.name }}</p>
+  <div *ngIf="newLocation" class="details container box-shadow">
+    <h2 class="details-name" *ngIf="newLocation">{{ newLocation.name }}</h2>
+    <div>
+      <p class="location-details">{{ newLocation.address }}</p>
 
-    <p *ngIf="newLocation">{{ newLocation.coords.coordinates }}</p>
+      <!-- <app-item-output (newItemEvent)="currentLocation($event)"></app-item-output> -->
+      <!-- <p class="location-details">{{ item }}</p> -->
 
-    <p *ngIf="newLocation">{{ newLocation.coords.coordinates[0] }}</p>
+    </div>
+
   </div>
   <div class="container">
     <div id="mapid" class="box-shadow"></div>

@@ -1,3 +1,11 @@
+<!-- _________________________________________________ -->
+<!-- PROVIDE DEFINITION FOR DIFFERENT TIERS OF TESTING -->
+<!-- _________________________________________________ -->
+
+<p class="warning container">
+  FOR ACADEMIC PURPOSES ONLY. DON'T USE FOR ACTUAL COVID-19 INFORMATION
+</p>
+
 <section *ngFor="let location of locations">
   <div class="container-fluid location-list box-shadow">
     <div class="location-item col-12 row">
@@ -5,9 +13,7 @@
         <a routerLink="/location/{{location._id}}">{{ location.name }}</a>
       </div>
       <div class="location-description">
-        <p class="warning">
-          FOR ACADEMIC PURPOSES ONLY. DON'T USE FOR ACTUAL COVID-19 INFORMATION
-        </p>
+
         <div ngPreserveWhitespaces class="mb-0">
           <p class="address">{{ location.address }}</p>
           <span class="services"><i
