@@ -88,7 +88,7 @@ const locationReadOne = (req, res) => {
 const createLocation = (req, res) => {
     Loc.create({
         name:req.body.name,
-        adress:req.body.address,
+        address:req.body.address,
         coords: {
             type: "Point",
             coordinates: [parseFloat(req.body.lng),
@@ -108,8 +108,65 @@ const createLocation = (req, res) => {
     });
 };
 
+const deleteLocation = (req, res) => {
+    const {locationid} = req.params;
+    if (locationid) {
+        Loc.findByIdAndRemove(locationid)
+        .exec((err, location) => {
+            if (err) {
+                return res
+                .status(404)
+                .json(err);
+            }
+            res
+            .status(204)
+            .json({"message" : "Location Deleted"});
+        });
+    } else {
+        return res
+        .status(404)
+        .json({"message" : "No Location Found"})
+    }
+
+};
+
+const updateLocation = (req, res) => {
+    if (!req.params.locationid) {
+        return res.response(404).json({"message": "Not found, Location not found."});
+    }
+    Loc.findById(req.params.locationid).exec((err, location) => {
+        if (!location) { 
+            return res.response(404).json({"message" : "Location not found"}); 
+        } else if (err) {
+            return res.response(404).json(err);
+        }
+
+        location.name = req.body.name;
+        location.address = req.body.address;
+        location.coords = { 
+            type: "Point", 
+            coordinates: [parseFloat(req.body.lng), parseFloat(req.body.lat)] 
+        };
+        location.services = {
+            vaccine: req.body.vaccine,
+            rapidTest: req.body.rapidTest,
+            test: req.body.test
+        }
+
+        location.save((err, loc) => {
+            if (err) { res.status(404).json(err); } 
+            else { res.status(200).json(loc); }
+
+        });
+
+    });
+
+};
+
 module.exports = {
     locationsListByDistance,
     locationReadOne,
-    createLocation
+    createLocation,
+    deleteLocation,
+    updateLocation
 };

@@ -1,0 +1,25 @@
+<section *ngFor="let location of locations">
+  <div class="container-fluid location-list box-shadow">
+    <div class="location-item col-12 row">
+      <div class="location-name location-list">
+        <a routerLink="/location/{{location._id}}">{{ location.name }}</a>
+      </div>
+      <div class="location-description">
+        <p class="warning">
+          FOR ACADEMIC PURPOSES ONLY. DON'T USE FOR ACTUAL COVID-19 INFORMATION
+        </p>
+        <div ngPreserveWhitespaces class="mb-0">
+          <p class="address">{{ location.address }}</p>
+          <span class="services"><i
+              class="{{ (location.services[0].vaccine) ? 'fa fa-check' : 'fa fa-times' }}"></i>Vaccine &ensp;</span>
+          <span class="services"><i
+              class="{{ (location.services[0].rapidTest) ? 'fa fa-check' : 'fa fa-times' }}"></i>Rapid Test
+            &ensp;</span>
+          <span class="services"><i
+              class="{{ (location.services[0].test) ? 'fa fa-check' : 'fa fa-times' }}"></i>Testing &ensp;</span>
+        </div>
+        <div class="float-left location-distance">{{ location.distance | distance }} away</div>
+      </div>
+    </div>
+  </div>
+</section>

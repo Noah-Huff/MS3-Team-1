@@ -1,0 +1,14 @@
+<div>
+
+  <div class="details container box-shadow">
+    <p *ngIf="newLocation">{{ newLocation.name }}</p>
+
+    <p *ngIf="newLocation">{{ newLocation.coords.coordinates }}</p>
+
+    <p *ngIf="newLocation">{{ newLocation.coords.coordinates[0] }}</p>
+  </div>
+  <div class="container">
+    <div id="mapid" class="box-shadow"></div>
+  </div>
+
+</div>

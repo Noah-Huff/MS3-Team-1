@@ -1,0 +1,75 @@
+:root {
+  --primary-grey: #706e6d;
+  --primary-red: #E5625E;
+  --primary-green: #849993;
+  --dark-green: #243010;
+  --primary-purple: #1F0812;
+  --light-grey: #CDCBCB;
+}
+
+.location-list {
+  border-radius: 20px;
+}
+.location-distance {
+  border: 3px solid rgba(0, 0, 0, .1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.tm-portfolio-name {
+  color: white;
+  background-color: var(--primary-grey);
+}
+
+.fa-times {
+  color: red;
+}
+.fa-check {
+  color: green;
+}
+.address {
+  font-size: 23px;
+  font-weight: bold;
+}
+.services {
+  font-size: 25px;
+  white-space: nowrap;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+}
+.warning {
+  background-color: yellow;
+}
+
+#mapid {
+  height: 600px;
+  border: 2px solid var(--primary-grey);
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.card {
+  height: 300px;
+  width: 300px;
+}
+.details {
+  margin-top: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  background-color: var(--primary-grey);
+  color: white;
+}
+.background-color {
+  background-color: var(--light-grey);
+}
+.box-shadow {
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, .1);
+}
+
+/* Map Section of the Details Page */
