@@ -65,6 +65,7 @@ a:hover {
   display: flex;
   align-items: center;
   margin-bottom: 80px;
+  margin-top: 80px;
 }
 
 .location-name {
@@ -219,15 +220,15 @@ p {
 }
 
 @media (max-width: 730px) {
-  .tm-location-item {
+  .location-item {
     flex-direction: column;
   }
 
-  .tm-location-name {
+  .location-name {
     justify-content: center;
   }
 
-  .tm-location-name,
+  .location-name,
   .location-description {
     width: 100%;
   }

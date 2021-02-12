@@ -1,7 +1,7 @@
-import { ConstructorSansProvider } from "@angular/core";
-import { Services } from "@angular/core/src/view";
+//import { ConstructorSansProvider } from "@angular/core";
+//import { Services } from "@angular/core/src/view";
 
-class services {
+class Services {
     vaccine: boolean;
     rapidTest: boolean;
     test: boolean;
