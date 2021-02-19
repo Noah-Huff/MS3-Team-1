@@ -67,3 +67,4 @@ connect();
 
 require('./locations');
 require('./users');
+require('./admin');

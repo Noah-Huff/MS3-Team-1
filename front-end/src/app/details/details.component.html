@@ -3,11 +3,16 @@
   <div *ngIf="newLocation" class="details container box-shadow">
     <h2 class="details-name" *ngIf="newLocation">{{ newLocation.name }}</h2>
     <div>
-      <p class="location-details">{{ newLocation.address }}</p>
-
-      <!-- <app-item-output (newItemEvent)="currentLocation($event)"></app-item-output> -->
-      <!-- <p class="location-details">{{ item }}</p> -->
-
+      <div ngPreserveWhitespaces class="mb-0">
+        <p class="address">{{ newLocation.address }}</p>
+        <span class="services"><i
+            class="{{ (newLocation.services[0].vaccine) ? 'fa fa-check' : 'fa fa-times' }}"></i>Vaccine &ensp;</span>
+        <span class="services"><i
+            class="{{ (newLocation.services[0].rapidTest) ? 'fa fa-check' : 'fa fa-times' }}"></i>Rapid Test
+          &ensp;</span>
+        <span class="services"><i
+            class="{{ (newLocation.services[0].test) ? 'fa fa-check' : 'fa fa-times' }}"></i>Testing &ensp;</span>
+      </div>
     </div>
 
   </div>

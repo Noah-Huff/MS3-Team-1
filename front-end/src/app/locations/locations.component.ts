@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { LocationInfoService } from '../location-info.service';
 import { Location } from '../location';
 import { GeolocationService } from '../geolocation.service';
@@ -12,13 +13,7 @@ import { EventEmitter } from '@angular/core';
 })
 
 export class LocationsComponent implements OnInit {
-/*
-  @Output() clickedLocation = new EventEmitter<string>();
 
-  addLocation(value: string) {
-    this.clickedLocation.emit(value);
-  }
-*/
 
   constructor(private locationInfoService: LocationInfoService,
     private geoLocationService: GeolocationService) { }

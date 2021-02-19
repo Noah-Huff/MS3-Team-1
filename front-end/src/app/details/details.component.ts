@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Injectable } from '@angular/core';
 import { Location } from '../location';
 import { LocationInfoService } from '../location-info.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 import * as L from 'leaflet';
-import { StringifyOptions } from 'querystring';
 
 @Component({
   selector: 'app-details',
@@ -21,13 +21,7 @@ export class DetailsComponent implements OnInit {
   constructor(private locationInfoService: LocationInfoService,
     private route: ActivatedRoute) { }
 
-/*
-    locationName: string;
-
-    currentLocation(newItem: string) {
-      this.locationName = newItem;
-    }
-  */
+  
 
 
 
@@ -57,7 +51,7 @@ export class DetailsComponent implements OnInit {
       )
       .subscribe((newLocation: Location) => {
         this.newLocation = newLocation;
-        console.log("LOCATION", newLocation.coords.coordinates[0]);
+        console.log("LOCATION DETAILS TS", newLocation);
         addToMap(newLocation.coords.coordinates[0], newLocation.coords.coordinates[1]);
 
       });

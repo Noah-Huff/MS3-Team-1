@@ -81,8 +81,8 @@ const locationReadOne = (req, res) => {
             } else if (err) {
                 return res.status(404).json(err);
             }
-            res.status(200).json(location);
             console.log('LOCATION READ ONE', location);
+            res.status(200).json(location);
         });
 };
 

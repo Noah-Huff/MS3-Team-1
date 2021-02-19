@@ -4,11 +4,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 require('./app_api/models/db');
+
+//these are for user login
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const apiRouter = require('./app_api/routes/index');
+const passport = require('passport');
+require('./app_api/config/passport');
 
 var app = express();
 
