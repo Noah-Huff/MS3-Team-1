@@ -6,9 +6,23 @@
   --primary-purple: #1F0812;
   --light-grey: #CDCBCB;
 }
-
+.grid-2 {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
 .location-list {
   border-radius: 20px;
+}
+.admin-location-details {
+  border-top: solid var(--primary-grey) 1px;
+  padding: 15px;
+  margin: 15px;
+}
+.admin-delete-check {
+  padding-left: 15px;
+}
+.delete-location-btn {
+  background-color: var(--primary-red);
 }
 .location-distance {
   border: 3px solid rgba(0, 0, 0, .1);
@@ -29,8 +43,7 @@
   color: green;
 }
 .address {
-  font-size: 23px;
-  font-weight: bold;
+  font-size: 30px;
 }
 .services {
   font-size: 25px;
@@ -57,6 +70,7 @@ a:hover {
   border: 2px solid var(--primary-grey);
   border-radius: 20px;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .card {
@@ -69,10 +83,16 @@ a:hover {
   margin-bottom: 30px;
   background-color: var(--primary-grey);
   color: white;
-
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
 }
 .details-name {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  padding: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.details-info {
   padding: 30px;
 }
 .location-details {
@@ -93,4 +113,88 @@ a:hover {
   text-align: center;
 }
 
-/* Map Section of the Details Page */
+
+/* I modified the checkboxes from here
+https://www.w3docs.com/tools/code-editor/5120
+/Hiding the initial checkbox */
+
+.main {
+  display: block;
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+input[type=checkbox] {
+  visibility: hidden;
+}
+/* Creating a custom checkbox based on demand */
+.w3docs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: black;
+}
+/* Specify the background color to be shown when hovering over checkbox */
+.main:hover input ~ .w3docs {
+  background-color: gray;
+}
+/* Specify the background color to be shown when checkbox is active */
+.main input:active ~ .w3docs {
+  background-color: white;
+}
+/* Specify the background color to be shown when checkbox is checked */
+.main input:checked ~ .w3docs {
+  background-color: var(--primary-red);
+}
+/* Checkmark to be shown in checkbox */
+/* It is not be shown when not checked */
+.w3docs:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Display checkmark when checked */
+.main input:checked ~ .w3docs:after {
+  display: block;
+}
+/* Styling the checkmark using webkit */
+/* Rotated the rectangle by 45 degree and 
+showing only two border to make it look
+like a tickmark */
+.main .w3docs:after {
+  left: 8px;
+  bottom: 5px;
+  width: 10px;
+  height: 18px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 800px) {
+  .details {
+    display: grid;
+    grid-template-columns: .75fr 2fr;
+  }
+  .details-name {
+    font-size: 2rem;
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .details-info {
+    padding: 15px;
+  }
+  .address {
+    font-size: 23px;
+  }
+  .services {
+    font-size: 20px;
+  }
+}

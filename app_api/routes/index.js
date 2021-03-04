@@ -27,6 +27,9 @@ router.route('/admin/login')
 router.route('/admin/create')
 .post(ctrlAdmin.createAdmin);
 
+router.route('/admin/location')
+.get(ctrlLocations.allLocations);
+
 /*
 .get(ctrlAdmin.adminLogin);
 

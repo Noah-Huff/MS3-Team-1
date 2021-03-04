@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    function addToMap(lng, lat) {
+    function addToMap(lng, lat, name) {
       var mymap = L.map('mapid').setView([lat, lng], 13);
       L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -38,7 +38,7 @@ export class DetailsComponent implements OnInit {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiaHVmZnN0ZXIiLCJhIjoiY2toZTZzeTd4MG03czMwbzIwN2xiNHgwaSJ9.4PrmZNzpL6Q1rZ49bCD9lA'
       }).addTo(mymap);
-      var marker = L.marker([lat, lng]).addTo(mymap);
+      L.marker([lat, lng]).addTo(mymap).bindPopup(name).openPopup();
     }
 
     this.route.paramMap
@@ -52,7 +52,7 @@ export class DetailsComponent implements OnInit {
       .subscribe((newLocation: Location) => {
         this.newLocation = newLocation;
         console.log("LOCATION DETAILS TS", newLocation);
-        addToMap(newLocation.coords.coordinates[0], newLocation.coords.coordinates[1]);
+        addToMap(newLocation.coords.coordinates[0], newLocation.coords.coordinates[1], newLocation.name);
 
       });
 

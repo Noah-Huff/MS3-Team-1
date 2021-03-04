@@ -4,6 +4,24 @@ const mongoose = require('mongoose');
 const Loc = mongoose.model('Location');
 const Admin = mongoose.model('Admin');
 
+/*
+const _getAdmin = (req, res, callback) => {
+    if ( req.payload && req.payload.email ) {
+        Admin.findOne({ email: req.payload.email })
+        .exec( ( err, admin ) => {
+            if ( !admin ) {
+                return res.status(404).json( { "message" : "Not an admin user" } );
+            } else if ( err ) {
+                console.log(err);
+                return res.status(404).json(err);
+            }
+        });
+    } else {
+        return res.status(404).json( { "message" : "User not found " } );
+    }
+}
+*/
+
 const createAdmin = (req, res) => {
     if (!req.body.name || !req.body.email || !req.body.password) {
         return res
@@ -16,7 +34,6 @@ const createAdmin = (req, res) => {
     admin.setPassword(req.body.password);
     admin.save((err, admin) => {
         if (err) {
-            console.log("DOGGONNIT, AN ERROR");
             res
             .status(404)
             .json(err);

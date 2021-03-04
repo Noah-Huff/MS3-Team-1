@@ -1,10 +1,11 @@
-<div>
+<div class="container">
 
-  <div *ngIf="newLocation" class="details container box-shadow">
+  <div *ngIf="newLocation" class="details box-shadow">
     <h2 class="details-name" *ngIf="newLocation">{{ newLocation.name }}</h2>
-    <div>
+    <div class="details-info">
       <div ngPreserveWhitespaces class="mb-0">
         <p class="address">{{ newLocation.address }}</p>
+        <span class="services">Services: </span>
         <span class="services"><i
             class="{{ (newLocation.services[0].vaccine) ? 'fa fa-check' : 'fa fa-times' }}"></i>Vaccine &ensp;</span>
         <span class="services"><i
@@ -16,7 +17,7 @@
     </div>
 
   </div>
-  <div class="container">
+  <div class="">
     <div id="mapid" class="box-shadow"></div>
   </div>
 

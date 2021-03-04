@@ -87,6 +87,7 @@ const locationReadOne = (req, res) => {
 };
 
 const createLocation = (req, res) => {
+    console.log("API controller", req.body);
     Loc.create({
         name: req.body.name,
         address: req.body.address,
@@ -112,6 +113,7 @@ const createLocation = (req, res) => {
 const deleteLocation = (req, res) => {
     const { locationid } = req.params;
     if (locationid) {
+        
         Loc.findByIdAndRemove(locationid)
             .exec((err, location) => {
                 if (err) {
@@ -119,14 +121,10 @@ const deleteLocation = (req, res) => {
                         .status(404)
                         .json(err);
                 }
-                res
-                    .status(204)
-                    .json({ "message": "Location Deleted" });
+                return res.status(204).json({ "message": "Location Deleted" });
             });
     } else {
-        return res
-            .status(404)
-            .json({ "message": "No Location Found" })
+        return res.status(404).json({ "message": "No Location Found" });
     }
 
 };
@@ -164,10 +162,20 @@ const updateLocation = (req, res) => {
 
 };
 
+const allLocations = async (req, res) => {
+    console.log('INSIDE ALL_LOCATIONS', req.body);
+    let query = Loc.find({}).sort('name');
+    let locationList = await query.exec();
+    //locationList.sort(locationList.name);
+    console.log('LOCATION LIST');
+    return res.status(200).json(locationList);
+}
+
 module.exports = {
     locationsListByDistance,
     locationReadOne,
     createLocation,
     deleteLocation,
-    updateLocation
+    updateLocation,
+    allLocations
 };

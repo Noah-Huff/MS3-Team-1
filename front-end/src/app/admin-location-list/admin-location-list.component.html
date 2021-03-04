@@ -1,8 +1,23 @@
-<p>
-  admin-location-list works!
-</p>
-<div class="add-location container">
-<button routerLink="/admin/location/add" type="submit" class="float-right btn tm-btn-submit rounded-0 text-white">
-  Add Location
-</button>
+
+<div class=" location-list grid-2 ">
+  <div class="  container ">
+    <section *ngFor="let location of locationList" class="grid-2 admin-location-details">
+      <div class= "">
+        <p>{{location.name}} <br> {{location.address}}</p>
+      </div>
+
+      <div>
+        <button (click)="deleteLocation(this.location._id)" type="submit" class=" delete-location-btn ">
+          Delete Location
+        </button>
+      </div>
+
+    </section>
+  </div>
+  <div class=" container ">
+    <button routerLink="/admin/location/add" type="submit" class="float-right btn tm-btn-submit rounded-0 text-white">
+      Add Location
+    </button>
+
+  </div>
 </div>
