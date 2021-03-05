@@ -1,4 +1,4 @@
 export const environment = {
-  apiBaseURL: 'http://localhost:3000/api',
+  apiBaseURL: 'https://floating-fortress-39607.herokuapp.com/api',
   production: true
 };
