@@ -47,7 +47,6 @@ const createAdmin = (req, res) => {
 };
 
 const authUser = asyncHandler(async (req, res) => {
-    console.log("AUTHUSER ---------- ", req.body);
     if (req.body.email.length <= 1 || req.body.password == '' || req.body.name == '') {
         return res
         .status(400)

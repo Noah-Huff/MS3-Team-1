@@ -30,8 +30,8 @@ export class AdminLocationListComponent implements OnInit {
       this.router.navigateByUrl('admin/login');
     }
   }
-  
 
+  
   public getLocations(): void {
     this.locationInfoService.adminLocations().then(locations => this.locationList = locations);
     console.log("GET LOCATIONS", this.locationList);
@@ -55,6 +55,11 @@ export class AdminLocationListComponent implements OnInit {
       function () {
         alertify.error("Cancelled");
       });
+  }
+
+  public adminLogout(): void {
+    this.authenticationService.logout();
+    this.router.navigateByUrl('admin/login');
   }
 
 }
