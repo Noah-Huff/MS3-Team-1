@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from '../admin-login/admin-login.component';
 import { AdminLocationListComponent } from '../admin-location-list/admin-location-list.component';
 import { AddLocationComponent } from '../add-location/add-location.component';
+import { AboutComponent } from '../about/about.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'admin/location/add',
     component: AddLocationComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   }
 ]
 

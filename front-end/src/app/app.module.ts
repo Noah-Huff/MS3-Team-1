@@ -15,6 +15,7 @@ import { DistancePipe } from './distance.pipe';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminLocationListComponent } from './admin-location-list/admin-location-list.component';
 import { AddLocationComponent } from './add-location/add-location.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddLocationComponent } from './add-location/add-location.component';
     AdminLoginComponent,
     AdminLocationListComponent,
     AddLocationComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
