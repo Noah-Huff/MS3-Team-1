@@ -12,6 +12,9 @@ import { BannerComponent } from './banner/banner.component';
 import { DetailsComponent } from './details/details.component';
 import { FrameworkComponent } from './framework/framework.component';
 import { DistancePipe } from './distance.pipe';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminLocationListComponent } from './admin-location-list/admin-location-list.component';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { DistancePipe } from './distance.pipe';
     DetailsComponent,
     FrameworkComponent,
     DistancePipe,
+    AdminLoginComponent,
+    AdminLocationListComponent,
+    AddLocationComponent,
   ],
   imports: [
     BrowserModule,

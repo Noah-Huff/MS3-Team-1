@@ -76,7 +76,8 @@ a:hover {
   display: flex;
   align-items: center;
   text-align: center;
-  background-color: #7a808b;
+  background-color: var(--primary-grey);
+  border: solid var(--light-grey) 15px;
   color: white;
 }
 

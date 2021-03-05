@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { LocationInfoService } from '../location-info.service';
 import { Location } from '../location';
 import { GeolocationService } from '../geolocation.service';
@@ -35,7 +36,6 @@ export class LocationsComponent implements OnInit {
           console.log(this.locations);
         });
     }
-
 
     private _showError(error: any): void {
       this.message = error.message;
