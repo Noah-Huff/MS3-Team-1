@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '../location';
 import { LocationInfoService } from '../location-info.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 var alertify = require('alertifyjs');
 
 @Component({
@@ -23,16 +24,23 @@ export class AddLocationComponent implements OnInit {
     test: false
   };
 
-  constructor( private locationInfoService: LocationInfoService,
-              private router: Router) { }
+  constructor(
+    private locationInfoService: LocationInfoService,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+
+  ) { }
 
   ngOnInit() {
+    if ( !this.authenticationService.isLoggedIn() ) {
+      this.router.navigateByUrl('admin/login');
+    }
   }
 
 
 
   public postLocation(): void {
-    
+
     console.log("location component postLocation", this);
     this.locationInfoService.postLocation(this.location);
     alertify.success("Added Location");
@@ -44,13 +52,13 @@ export class AddLocationComponent implements OnInit {
   }
 
   private _resetForm(): void {
-    this.location.name='';
-    this.location.address='';
-    this.location.lat='';
-    this.location.lng='';
-    this.location.vaccine=false;
-    this.location.rapidTest=false;
-    this.location.test=false;
+    this.location.name = '';
+    this.location.address = '';
+    this.location.lat = '';
+    this.location.lng = '';
+    this.location.vaccine = false;
+    this.location.rapidTest = false;
+    this.location.test = false;
   }
 
 
